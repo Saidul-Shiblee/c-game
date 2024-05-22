@@ -32,7 +32,7 @@ const LeaderBoardModal = ({  setIsLeaderBoardOpen,countdown,leaderBoardData,time
             </div>
             <div className="absolute top-1/4 w-[70%] ml-36">
               <ul className="grid gap-3">
-               {leaderBoardData?.[currentMascotLeaderBoard]?.map((el,index)=> <li kay={el.username+index} className={`flex justify-between 
+               {leaderBoardData?.[currentMascotLeaderBoard]?.map((el,index)=> <li key={el.username+index} className={`flex justify-between 
                items-center
                 text-white py-2 px-2 ${index===0?'lb':index===1?'lb2':index===2?'lb3':"lbr"}`} >
                   <div className="flex items-center">
