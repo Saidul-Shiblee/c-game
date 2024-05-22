@@ -19,13 +19,13 @@ const ProgressSection = ({ gameData, currentMascot }) => {
               alt="hamar image"
             />
             <p>
-              <span className=" text-yellow-400 text-2xl font-extrabold outlinefont">
+              <span className=" passed-quest1 text-2xl font-extrabold outlinefont">
                 {numberOfClicks}
               </span>
-              <span className=" text-purple-900 font-semibold">/100</span>
+              <span className=" text-purple-900 font-semibold">{" "}/ {" "} 100</span>
             </p>
           </div>
-          <div className="flex items-center">
+          <div className="flex gap-2 items-center">
             <p className=" text-purple-900 font-semibold">100</p>
             <Image
               src={"/assets/images/gem2.png"}
