@@ -129,7 +129,7 @@ saveData()
   useEffect(() => {
     const getLeaderBoard = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/getLeaderBoard`, {
+        const res = await fetch(`/api/getLeaderBoard`, {
           method: "GET",
           cache: 'no-store',
           headers: {

@@ -3,7 +3,7 @@ export const getTodayDate = () => {
 
   const malaysiaTimeZone = 'Asia/Kuala_Lumpur';
       const malaysiaTime = new Date(date.toLocaleString('en-US', { timeZone: malaysiaTimeZone }));
-      console.log("malay time", malaysiaTime);
+     
       let day = malaysiaTime.getDate();
       let month = malaysiaTime.getMonth() + 1;
       let year = malaysiaTime.getFullYear();

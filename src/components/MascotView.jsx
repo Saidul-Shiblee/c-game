@@ -105,7 +105,7 @@ const MascotView = ({
             userId: currentUser?.uid,
           })
          
-          // console.log("totalPoints", totalPoints);
+   
         }
         if (pre[currentMascot.version]?.numberOfClicks + 1 === 20 && pre[currentMascot.version]?.quest < 2) {
           await insertCollection(currentMascot?.version+"_"+getTodayDate(), {

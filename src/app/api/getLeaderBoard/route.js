@@ -31,10 +31,8 @@ export async function GET(req) {
     try {
         const collections = [`mascot1_${getTodayDate()}`, `mascot2_${getTodayDate()}`, `mascot3_${getTodayDate()}`];
 
-      
         const [leaderboard1, leaderboard2, leaderboard3] = await Promise.all(collections.map(collectionName => getTopFiveDocumentsFromCollection(collectionName)));
        
-       console.log(leaderboard1, leaderboard2, leaderboard3);
         return NextResponse.json(
             {
                 message: `LeaderBoard Data`,

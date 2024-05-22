@@ -1,7 +1,7 @@
 import { collection, addDoc, setDoc, doc, getDoc } from "firebase/firestore";
 import { db } from "@/app/firebase/config";
 export async function insertCollection(collectionName, data) {
-  console.log(collectionName, data)
+
   try {
     await setDoc(doc(db, collectionName, data.userId), data);
   } catch (error) {
