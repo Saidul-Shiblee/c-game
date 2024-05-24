@@ -1,5 +1,5 @@
 "use client";
-import { getTodayMalaysiaDate } from '@/utils/fuctions'; // Ensure this path is correct
+import { getTodayMalaysiaDate } from '@/utils/fuctions';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
@@ -34,8 +34,8 @@ const LeaderBoardModal = ({ isLeaderBoardOpen, setIsLeaderBoardOpen }) => {
   };
 
   return (
-    <div className="fixed inset-0 overflow-y-auto z-[1000] bg-gray-800 opacity-90">
-      <div className="bg-light bg-cover h-screen bg-no-repeat w-full">
+    <div className="fixed inset-0 overflow-y-auto z-[1000] bg-gray-800">
+      <div className="absolute inset-0 bg-light bg-cover bg-no-repeat opacity-80 z-10">
         <div className="max-w-[1000px] mx-auto">
           <div className="relative bg-leaderboardBg bg-contain bg-no-repeat h-screen w-full">
             <div onClick={handleCloseModal} className="absolute top-20 left-[80%]">
@@ -49,7 +49,7 @@ const LeaderBoardModal = ({ isLeaderBoardOpen, setIsLeaderBoardOpen }) => {
             </div>
             <div className="absolute top-1/4 w-[70%] ml-36">
               <ul className="grid gap-3">
-                <li className="flex justify-between items-center text-white py-2 px-2 bg-[#9e62b7]">
+                <li className="flex justify-between items-center text-white py-2 px-2 lb">
                   <div className="flex items-center">
                     <Image
                       src="/assets/images/gold.png"
@@ -58,20 +58,20 @@ const LeaderBoardModal = ({ isLeaderBoardOpen, setIsLeaderBoardOpen }) => {
                       className="cursor-pointer w-[39px] h-[40px]"
                       alt="x"
                     />
-                    <span className="font-bold outlinefont text-[22px]">MOMOMO 1234</span>
+                    <span className="lb-text">MOMOMO 1234</span>
                   </div>
-                  <div className="flex">
-                    <span className="mr-2 font-bold outlinefont text-[22px]">9,000,000,000</span>
+                  <div className="flex items-center">
+                    <span className="mr-2 lb-text">9,000,000,000</span>
                     <Image
                       src="/assets/images/hamar2.png"
                       width={50}
                       height={50}
-                      className="cursor-pointer w-[39px] h-[40px]"
+                      className="cursor-pointer w-[25px] h-[25px]"
                       alt="x"
                     />
                   </div>
                   <div className="flex items-center">
-                    <span className="font-bold text-[22px]">9,000,000,000</span>
+                    <span className="lb-point">9,000,000,000</span>
                     <Image
                       src="/assets/images/gem.png"
                       width={50}
@@ -81,29 +81,29 @@ const LeaderBoardModal = ({ isLeaderBoardOpen, setIsLeaderBoardOpen }) => {
                     />
                   </div>
                 </li>
-                <li className="flex justify-between items-center text-white py-2 px-2 bg-[#9e62b7]">
+                <li className="flex justify-between items-center text-white py-2 px-2 lb2">
                   <div className="flex items-center">
                     <Image
-                      src="/assets/images/gold.png"
+                      src="/assets/images/silvar.png"
                       width={50}
                       height={50}
                       className="cursor-pointer w-[39px] h-[40px]"
                       alt="x"
                     />
-                    <span className="font-bold outlinefont text-[22px]">MOMOMO 1234</span>
+                    <span className="lb-text">MOMOMO 1234</span>
                   </div>
                   <div className="flex">
-                    <span className="mr-2 font-bold outlinefont text-[22px]">9,000,000,000</span>
+                    <span className="mr-2 lb-text">9,000,000,000</span>
                     <Image
                       src="/assets/images/hamar2.png"
                       width={50}
                       height={50}
-                      className="cursor-pointer w-[39px] h-[40px]"
+                      className="cursor-pointer w-[25px] h-[25px]"
                       alt="x"
                     />
                   </div>
                   <div className="flex items-center">
-                    <span className="font-bold text-[22px]">9,000,000,000</span>
+                    <span className="lb-point">9,000,000,000</span>
                     <Image
                       src="/assets/images/gem.png"
                       width={50}
@@ -113,29 +113,29 @@ const LeaderBoardModal = ({ isLeaderBoardOpen, setIsLeaderBoardOpen }) => {
                     />
                   </div>
                 </li>
-                <li className="flex justify-between items-center text-white py-2 px-2 bg-[#9e62b7]">
+                <li className="flex justify-between items-center text-white py-2 px-2 lb3">
                   <div className="flex items-center">
                     <Image
-                      src="/assets/images/gold.png"
+                      src="/assets/images/platinum.png"
                       width={50}
                       height={50}
                       className="cursor-pointer w-[39px] h-[40px]"
                       alt="x"
                     />
-                    <span className="font-bold outlinefont text-[22px]">MOMOMO 1234</span>
+                    <span className="lb-text">MOMOMO 1234</span>
                   </div>
                   <div className="flex">
-                    <span className="mr-2 font-bold outlinefont text-[22px]">9,000,000,000</span>
+                    <span className="mr-2 lb-text">9,000,000,000</span>
                     <Image
                       src="/assets/images/hamar2.png"
                       width={50}
                       height={50}
-                      className="cursor-pointer w-[39px] h-[40px]"
+                      className="cursor-pointer w-[25px] h-[25px]"
                       alt="x"
                     />
                   </div>
                   <div className="flex items-center">
-                    <span className="font-bold text-[22px]">9,000,000,000</span>
+                    <span className="lb-point">9,000,000,000</span>
                     <Image
                       src="/assets/images/gem.png"
                       width={50}
@@ -145,29 +145,23 @@ const LeaderBoardModal = ({ isLeaderBoardOpen, setIsLeaderBoardOpen }) => {
                     />
                   </div>
                 </li>
-                <li className="flex justify-between items-center text-white py-2 px-2 bg-[#9e62b7]">
-                  <div className="flex items-center">
-                    <Image
-                      src="/assets/images/gold.png"
-                      width={50}
-                      height={50}
-                      className="cursor-pointer w-[39px] h-[40px]"
-                      alt="x"
-                    />
-                    <span className="font-bold outlinefont text-[22px]">MOMOMO 1234</span>
+                <li className="flex justify-between items-center text-white py-2 px-2 lbr">
+                  <div className="flex items-center ml-8">
+
+                    <span className="lb-text">MOMOMO 1234</span>
                   </div>
                   <div className="flex">
-                    <span className="mr-2 font-bold outlinefont text-[22px]">9,000,000,000</span>
+                    <span className="mr-2 lb-text">9,000,000,000</span>
                     <Image
                       src="/assets/images/hamar2.png"
                       width={50}
                       height={50}
-                      className="cursor-pointer w-[39px] h-[40px]"
+                      className="cursor-pointer w-[25px] h-[25px]"
                       alt="x"
                     />
                   </div>
                   <div className="flex items-center">
-                    <span className="font-bold text-[22px]">9,000,000,000</span>
+                    <span className="lb-point">9,000,000,000</span>
                     <Image
                       src="/assets/images/gem.png"
                       width={50}
@@ -177,11 +171,38 @@ const LeaderBoardModal = ({ isLeaderBoardOpen, setIsLeaderBoardOpen }) => {
                     />
                   </div>
                 </li>
+                <li className="flex justify-between items-center text-white py-2 px-2 lbr">
+                  <div className="flex items-center ml-8">
+
+                    <span className="lb-text">MOMOMO 1234</span>
+                  </div>
+                  <div className="flex">
+                    <span className="mr-2 lb-text">9,000,000,000</span>
+                    <Image
+                      src="/assets/images/hamar2.png"
+                      width={50}
+                      height={50}
+                      className="cursor-pointer w-[25px] h-[25px]"
+                      alt="x"
+                    />
+                  </div>
+                  <div className="flex items-center">
+                    <span className="lb-point">9,000,000,000</span>
+                    <Image
+                      src="/assets/images/gem.png"
+                      width={50}
+                      height={50}
+                      className="cursor-pointer w-[20px] h-[20px]"
+                      alt="x"
+                    />
+                  </div>
+                </li>
+            
                 {/* Repeat other list items here */}
               </ul>
             </div>
 
-            <div className="absolute bottom-10 -left-8 flex items-center">
+            <div className="absolute bottom-10 2xl:bottom-[25%] -left-8 flex items-center">
               {currentMascotLeaderBoard === 1 ? (
                 <Image
                   src="/assets/images/dog1.png"
@@ -240,7 +261,7 @@ const LeaderBoardModal = ({ isLeaderBoardOpen, setIsLeaderBoardOpen }) => {
               )}
             </div>
 
-            <div className="absolute bottom-20 right-8 ">
+            <div className="absolute bottom-20 2xl:bottom-[30%] right-8 ">
               <div className="w-[260px] h-10 bg-purple-900 opacity-80 rounded-[602px] flex justify-between items-center pl-3">
                 <h3 className="text-white">{`${timeRemaining.hours}:${timeRemaining.minutes}:${timeRemaining.seconds}s until reset`}</h3>
                 <div>
