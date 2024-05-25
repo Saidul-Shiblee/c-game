@@ -345,7 +345,7 @@ const MascotView = ({
     >
 
 <ClickCounter gameData={gameData} currentMascot={currentMascot} />
-      {delay ? (
+      {/* {delay ? (
         <div role="status">
           <svg
             aria-hidden="true"
@@ -365,18 +365,17 @@ const MascotView = ({
           </svg>
           <span class="sr-only">Loading...</span>
         </div>
-      ) : (
+      ) : ( */}
       
             <Image
               priority={true}
               src={showSecondImage ? currentImage : secondaryImg}
               alt="Game mascot"
               className="select-none object-cover absolute bottom-0"
-              width={930}
-              height={1145}
+             
             />
           
-      )}
+      {/* )} */}
 
       <WarningModal isOpen={isOPen} onClose={onClose}/>
     </div>
