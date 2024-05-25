@@ -368,7 +368,7 @@ const MascotView = ({
       ) : (
       
             <Image
-           
+              priority={true}
               src={showSecondImage ? currentImage : secondaryImg}
               alt="Game mascot"
               className="select-none object-cover absolute bottom-0"
