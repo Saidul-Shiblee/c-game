@@ -2,13 +2,20 @@
 import { useGlobalContext } from "@/context/ContextProvider";
 import { insertCollection } from "@/utils/firebase";
 import { getTodayDate } from "@/utils/fuctions";
-
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
-
 import useSound from "use-sound";
 import ClickCounter from "./ClickCounter";
 import WarningModal from "./WarningModal";
+import dog1 from "../../public/assets/images/catv1.png"
+import dog2 from "../../public/assets/images/mascott_v1.png"
+import dog3 from "../../public/assets/images/catIv2.png"
+import dog4 from "../../public/assets/images/cath2.png"
+import dog5 from "../../public/assets/images/catIv3.png"
+import dog6 from "../../public/assets/images/cathv3.png"
+import dog7 from "../../public/assets/images/catIv4.png"
+import dog8 from "../../public/assets/images/cathv5.png"
+import initailMascot from '../../public/assets/images/initial_mascot.png'
 
 const MascotView = ({
   setGameData,
@@ -377,6 +384,68 @@ const MascotView = ({
             />
           
       )}
+
+
+      <>
+      <Image
+              priority={true}
+              src={dog1}
+              alt="Game mascot"
+              className="hidden"
+            
+            />
+      <Image
+              priority={true}
+              src={dog2}
+              alt="Game mascot"
+              className="hidden"
+            
+            />
+      <Image
+              priority={true}
+              src={dog3}
+              alt="Game mascot"
+              className="hidden"
+            
+            />
+      <Image
+              priority={true}
+              src={dog4}
+              alt="Game mascot"
+              className="hidden"
+            
+            />
+      <Image
+              priority={true}
+              src={dog5}
+              alt="Game mascot"
+              className="hidden"
+            
+            />
+      <Image
+              priority={true}
+              src={dog6}
+              alt="Game mascot"
+              className="hidden"
+            
+            />
+      <Image
+              priority={true}
+              src={dog7}
+              alt="Game mascot"
+              className="hidden"
+            
+            />
+      <Image
+              priority={true}
+              src={dog8}
+              alt="Game mascot"
+              className="hidden"
+            
+            />
+
+      
+      </>
 
       <WarningModal isOpen={isOPen} onClose={onClose}/>
     </div>
