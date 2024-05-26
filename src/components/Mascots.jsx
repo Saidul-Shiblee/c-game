@@ -19,164 +19,260 @@ const Mascots = ({
   };
 
   return (
-    <div className="grid gap-4 ml-14 mt-16 w-[20%] ">
+    <div className="flex flex-col items-center justify-center gap-10 ml-14 mt-16 w-[30%] relative z-50">
       {/* mascot 1 */}
       <div>
         {currentMascot.version === mascots[0].version ? (
-          <div className=" bg-activeDogBg bg-no-repeat bg-contain lg:w-full h-[100px] relative rotate-[18deg]	">
+
+
+          <div className="relative w-[250px]  h-[100px] rotate-[20deg] -ml-3">
+            <Image
+              src={"/assets/images/activeDogBg.png"}
+              className="absolute -top-14 object-cover"
+              fill
+              alt="Dog"
+            />
+
             <Image
               src={"/assets/images/activeDog.png"}
-              className="absolute -top-14"
-              width={130}
-              height={196}
+              className="absolute w-[100px] h-[100px] -top-5"
+              width={200}
+              height={200}
               alt="Dog"
             />
-            {/* <div className="text-center text-white text-3xl font-normal font-LuckiestGuy">DOG</div> */}
-            <Image
-              src={"/assets/images/DOG.png"}
-              className="absolute left-32 bottom-[30%]"
-              width={60}
-              height={136}
-              alt="Dog"
-            />
-            <p className="absolute right-20 bottom-[20%] text-yellow-700 font-semibold">
-              {gameData?.mascot1?.quest}/5
+            <div className="flex gap-4 justify-start items-end absolute right-6 top-1/2 -translate-y-1/2">
+            <p className="active-dog ">
+              DOG
             </p>
-          </div>
+            <p className="text-[#A05209] relative top-2 ">
+            {gameData?.mascot1?.quest}/5
+            </p>
+
+            </div>
+            
+
+
+            </div>
+
         ) : (
-          <div
-            onClick={() => {
+
+
+          <div 
+               onClick={() => {
               setCurrentMascot(mascots[0]);
               setDelay(true);
             }}
-            className=" bg-initialDogBg bg-no-repeat bg-contain w-[200px] h-[100px] relative rotate-[20deg] -mr-20"
-          >
+          
+          className="relative w-[200px]  h-[70px] rotate-[22deg] ml-5">
+
+<Image
+              src={"/assets/images/initialDogBg.png"}
+              className="absolute -top-14 "
+              fill
+              alt="Dog"
+            />
+
             <Image
               src={"/assets/images/initialDog.png"}
-              className="absolute -top-8 -right-4"
-              width={100}
-              height={156}
+              className="absolute w-[90px] h-[90px] bottom-2 -right-2"
+              width={200}
+              height={200}
               alt="Dog"
             />
-            <Image
-              src={"/assets/images/dog_2.png"}
-              className="absolute left-7 bottom-[45%]"
-              width={60}
-              height={156}
-              alt="Dog"
-            />
-            <p className="absolute right-16 bottom-[35%] text-purple-900 font-normal">
-              {gameData?.mascot1?.quest}/5
+
+         <div className="flex gap-4 justify-start items-end absolute left-2 top-1/2 -translate-y-1/2">
+            <p className="inactive-dog ">
+              DOG
             </p>
-          </div>
+            <p className="text-[#580475] relative top-2 ">
+            {gameData?.mascot1?.quest}/5
+            </p>
+
+            </div>
+
+
+        </div>
+        
         )}
       </div>
 
       {/* mascot 2  */}
       <div>
-        {currentMascot.version === mascots[1].version ? (
-          <div className=" bg-activeDogBg bg-no-repeat bg-contain w-[300px] h-[100px] relative rotate-8	-ml-12 mb-5">
+        {
+        
+        currentMascot.version === mascots[1].version ? (
+
+
+          <div className="relative w-[250px]  h-[100px] -ml-10">
+            <Image
+              src={"/assets/images/activeDogBg.png"}
+              className="absolute -top-14 object-cover"
+              fill
+              alt="Dog"
+            />
+
             <Image
               src={"/assets/images/activeDog.png"}
-              className="absolute -top-14"
-              width={130}
-              height={196}
+              className="absolute w-[100px] h-[100px] -top-5"
+              width={200}
+              height={200}
               alt="Dog"
             />
-            <Image
-              src={"/assets/images/DOG.png"}
-              className="absolute left-32 bottom-[33%]"
-              width={50}
-              height={196}
+
+
+<Image
+              src={"/assets/images/activeDog.png"}
+              className="absolute w-[100px] h-[100px] -top-5"
+              width={200}
+              height={200}
               alt="Dog"
             />
-            <p className="absolute right-20 bottom-[20%] text-yellow-700 font-semibold">
-              {gameData?.mascot2?.quest}/5
+            <div className="flex gap-4 justify-start items-end absolute right-6 top-1/2 -translate-y-1/2">
+            <p className="active-dog ">
+              DOG
             </p>
-          </div>
+            <p className="text-[#A05209] relative top-2 ">
+            {gameData?.mascot2?.quest}/5
+            </p>
+
+            </div>
+
+
+            </div>
+        
+        
+       
         ) : (
-          <div
-            onClick={() => {
-              setCurrentMascot(mascots[1]);
-              setDelay(true);
-            }}
-            className="  bg-initialDogBg bg-no-repeat bg-contain w-[200px] h-[100px] relative	-ml-8"
-          >
-            <Image
+          <div 
+          onClick={() => {
+         setCurrentMascot(mascots[1]);
+         setDelay(true);
+       }}
+     
+     className="relative w-[200px]  h-[70px]  -ml-2">
+
+<Image
+         src={"/assets/images/initialDogBg.png"}
+         className="absolute -top-14 "
+         fill
+         alt="Dog"
+       />
+
+       
+
+<Image
               src={"/assets/images/initialDog.png"}
-              className="absolute -top-8 -right-4"
-              width={100}
-              height={156}
+              className="absolute w-[90px] h-[90px] bottom-2 -right-2"
+              width={200}
+              height={200}
               alt="Dog"
             />
-            <Image
-              src={"/assets/images/dog_2.png"}
-              className="absolute left-7 bottom-[45%]"
-              width={60}
-              height={156}
-              alt="Dog"
-            />
-            <p className="absolute right-16 bottom-[35%] text-purple-900 font-normal">
-              {gameData?.mascot2?.quest}/5
+
+         <div className="flex gap-4 justify-start items-end absolute left-2 top-1/2 -translate-y-1/2">
+            <p className="inactive-dog ">
+              DOG
             </p>
-          </div>
+            <p className="text-[#580475] relative top-2 ">
+            {gameData?.mascot1?.quest}/5
+            </p>
+
+            </div>
+
+
+   </div>
+         
         )}
       </div>
       {/* mascot 3  */}
       <div>
-        {currentMascot.version === mascots[2].version ? (
-          <div className=" bg-activeDogBg bg-no-repeat bg-contain w-[300px] h-[100px] relative -rotate-[18deg]	">
-            <Image
+        {
+
+currentMascot.version === mascots[2].version ? (
+
+
+  <div className="relative w-[250px]  h-[100px] -rotate-[20deg] -ml-4">
+    <Image
+      src={"/assets/images/activeDogBg.png"}
+      className="absolute -top-14 object-cover"
+      fill
+      alt="Dog"
+    />
+
+    <Image
+      src={"/assets/images/activeDog.png"}
+      className="absolute w-[100px] h-[100px] -top-5"
+      width={200}
+      height={200}
+      alt="Dog"
+    />
+
+<Image
               src={"/assets/images/activeDog.png"}
-              className="absolute -left-5 -top-14"
-              width={130}
-              height={196}
+              className="absolute w-[100px] h-[100px] -top-5"
+              width={200}
+              height={200}
               alt="Dog"
             />
-            <Image
-              src={"/assets/images/DOG.png"}
-              className="absolute left-24 bottom-[25%]"
-              width={80}
-              height={196}
-              alt="Dog"
-            />
-            <p className="absolute right-20 bottom-[20%] text-yellow-700 font-semibold">
-              {gameData?.mascot3?.quest}/5
+            <div className="flex gap-4 justify-start items-end absolute right-6 top-1/2 -translate-y-1/2">
+            <p className="active-dog ">
+              DOG
             </p>
-          </div>
+            <p className="text-[#A05209] relative top-2 ">
+            {gameData?.mascot3?.quest}/5
+            </p>
+
+            </div>
+
+
+    </div>
+        
+        
+
         ) : (
-          <div
-            onClick={() => {
-              setCurrentMascot(mascots[2]);
-              setDelay(true);
-            }}
-            className=" bg-initialDogBg bg-no-repeat bg-contain w-[200px] h-[100px] relative -rotate-[20deg]"
-          >
-            <Image
+
+          <div 
+          onClick={() => {
+         setCurrentMascot(mascots[2]);
+         setDelay(true);
+       }}
+     
+     className="relative w-[200px]  h-[70px]   -rotate-[22deg] ml-8">
+
+<Image
+         src={"/assets/images/initialDogBg.png"}
+         className="absolute -top-14 "
+         fill
+         alt="Dog"
+       />
+
+<Image
               src={"/assets/images/initialDog.png"}
-              className="absolute -top-8 -right-4"
-              width={100}
-              height={196}
+              className="absolute w-[90px] h-[90px] bottom-2 -right-2"
+              width={200}
+              height={200}
               alt="Dog"
             />
-            <Image
-              src={"/assets/images/dog_2.png"}
-              className="absolute left-7 bottom-[45%]"
-              width={60}
-              height={156}
-              alt="Dog"
-            />
-            <p className="absolute right-16 bottom-[35%] text-purple-900 font-semibold">
-              {gameData?.mascot3?.quest}/5
+
+         <div className="flex gap-4 justify-start items-end absolute left-2 top-1/2 -translate-y-1/2">
+            <p className="inactive-dog ">
+              DOG
             </p>
-          </div>
+            <p className="text-[#580475] relative top-2 ">
+            {gameData?.mascot1?.quest}/5
+            </p>
+
+            </div>
+
+
+   </div>
+       
         )}
       </div>
 
       <div>
         <Image
           src={"/assets/images/leaderboardbtn.png"}
-          className=" select-none -rotate-[20deg] -ml-20"
+          className=" select-none -rotate-[18deg] -ml-10 mt-4"
           onClick={() => setIsLeaderBoardOpen(true)}
           width={260}
           height={180}

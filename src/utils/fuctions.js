@@ -3,7 +3,7 @@ export const getTodayDate = () => {
 
   const malaysiaTimeZone = 'Asia/Kuala_Lumpur';
       const malaysiaTime = new Date(date.toLocaleString('en-US', { timeZone: malaysiaTimeZone }));
-      console.log("malay time", malaysiaTime);
+     
       let day = malaysiaTime.getDate();
       let month = malaysiaTime.getMonth() + 1;
       let year = malaysiaTime.getFullYear();
@@ -27,3 +27,18 @@ export const getTodayMalaysiaDate = () => {
   const malaysiaTime = new Date().toLocaleString('en-US', { timeZone: malaysiaTimeZone });
   return new Date(malaysiaTime);
 };
+
+
+export function calculateTimeRemaining() {
+  const malaysiaTime = getTodayMalaysiaDate();
+  const endOfDay = new Date(malaysiaTime);
+  endOfDay.setHours(23, 59, 59, 999);
+
+  const timeDifference = endOfDay - malaysiaTime;
+
+  const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+  return { hours, minutes, seconds };
+}

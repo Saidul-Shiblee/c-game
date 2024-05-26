@@ -11,11 +11,16 @@ import TASK_TEXT from "../../public/assets/images/TASK-TEXT.png";
 const Quest = ({ gameData, currentMascot }) => {
   const numberOfClicks = gameData?.[currentMascot?.version]?.numberOfClicks;
   const quest = gameData?.[currentMascot?.version]?.quest;
+  const quest1= process.env.QUEST_1 || 10;
+  const quest2= process.env.QUEST_2 || 20;
+  const quest3= process.env.QUEST_3 || 30;
+  const quest4= process.env.QUEST_4 || 40;
+  const quest5= process.env.QUEST_5 || 50;
   return (
-    <div className="w-[20%] h-screen flex justify-center items-center">
+    <div className="w-[30%] h-screen flex justify-center items-center">
       {/* <Tilt> */}
       {/* <div style={{ height: '300px', backgroundColor: 'darkgreen' }}> */}
-      <div className=" w-[90%] h-[387px] bg-quest-card bg-no-repeat bg-cover rounded-[14px] shadow-inner  relative flex flex-col justify-center items-center">
+      <div className=" w-[323px] h-[387px] bg-quest-card bg-no-repeat bg-cover rounded-[14px] shadow-inner  relative flex flex-col justify-center items-center">
         <div className="absolute top-[-50px] -left-1 w-[65%]">
           <h3 className="text-fuchsia-600 text-[80px] task font-LuckiestGuy relative  z-20">
             Task
@@ -38,7 +43,7 @@ const Quest = ({ gameData, currentMascot }) => {
                     quest >= 1 ? "passed-quest1" : "tsk-text"
                   }  font-LuckiestGuy `}
                 >
-                  10
+                  {quest1}
                 </p>
                 {
                   quest>=1 && <Image
@@ -135,7 +140,7 @@ const Quest = ({ gameData, currentMascot }) => {
                     quest >= 2 ? "passed-quest1" : "tsk-text"
                   }  font-LuckiestGuy `}
                 >
-                  20
+                  {quest2}
                 </p>
                 {
                   quest>=2 && <Image
@@ -155,14 +160,6 @@ const Quest = ({ gameData, currentMascot }) => {
                   alt="hamar image"
                 />
                 }
-                
-                {/* <Image
-                src={"/assets/images/star.png"}
-                width={10}
-                height={10}
-                className="h-4 w-4 passed-quest2 absolute bottom-0 -right-2 top-[30%]"
-                alt="hamar image"
-              /> */}
               </div>
               <Image
                 src={"/assets/images/hamar2.png"}
@@ -232,7 +229,7 @@ const Quest = ({ gameData, currentMascot }) => {
                     quest >= 3 ? "passed-quest1" : "tsk-text"
                   }  font-LuckiestGuy `}
                 >
-                  30
+                  {quest3}
                 </p>
                 {
                   quest>=3 && <Image
@@ -329,7 +326,7 @@ const Quest = ({ gameData, currentMascot }) => {
                     quest >= 4 ? "passed-quest1" : "tsk-text"
                   }  font-LuckiestGuy `}
                 >
-                  40
+                  {quest4}
                 </p>
                 {
                   quest>=4 && <Image
@@ -426,7 +423,7 @@ const Quest = ({ gameData, currentMascot }) => {
                     quest >= 5 ? "passed-quest1" : "tsk-text"
                   }  font-LuckiestGuy `}
                 >
-                  50
+                {quest5}
                 </p>
                 {
                   quest>=5 && <Image
@@ -641,4 +638,4 @@ const Quest = ({ gameData, currentMascot }) => {
   );
 };
 
-export default Quest;
+export default Quest;

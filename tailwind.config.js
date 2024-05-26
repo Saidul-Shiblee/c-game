@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
 // import img from "./public/assets/images/ClickerGameBg.png"
 module.exports = {
   content: [
@@ -13,6 +14,10 @@ module.exports = {
           primary: "#e29227",
           number: "#ffeea3"
         }
+      },
+      screens: {
+        '3xl': '1650px',
+        ...defaultTheme.screens,
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

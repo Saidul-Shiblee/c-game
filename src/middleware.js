@@ -1,9 +1,7 @@
 import { NextResponse } from "next/server";
-// import { HOME_ROUTE, ROOT_ROUTE, SESSION_COOKIE_NAME } from './constants';
-// import { HOME_ROUTE, ROOT_ROUTE, SESSION_COOKIE_NAME} from "@/utils/constants";
-import { HOME_ROUTE, ROOT_ROUTE, SESSION_COOKIE_NAME } from "./utils/constants";
 
-// const protectedRoutes = [HOME_ROUTE];
+import { SESSION_COOKIE_NAME } from "./utils/constants";
+
 const publicRoutes = ["/login", "/signup"];
 
 export default function middleware(req) {
@@ -12,7 +10,7 @@ export default function middleware(req) {
   const res = NextResponse.next();
   const session = req.cookies.get(SESSION_COOKIE_NAME)?.value;
   const parsedSession = session? JSON.parse(session) :{};
-  //console.log("parse session", parsedSession.userID);
+
 
   if (!isPublicRoute && !parsedSession?.userID) {
     return NextResponse.redirect(new URL("/login", req.nextUrl));

@@ -9,6 +9,9 @@ const nextConfig = {
     });
     return config;
   },
+  // env: {
+    
+  // }
 };
 
 export default nextConfig;
