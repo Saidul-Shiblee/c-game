@@ -49,7 +49,7 @@ export default function Home() {
           {currentUser?.reloadUserInfo?.displayName}
         </div>
       </div>
-      {/* <button onClick={logout} className=" absolute text-black top-2 w-[100px] right-10 z-50"> Logut</button> */}
+      <button onClick={logout} className=" absolute text-black top-2 w-[100px] right-10 z-50"> Logut</button>
 
       <HomeView gameData={gameData} setGameData={setGameData}/>
     

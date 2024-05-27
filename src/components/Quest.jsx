@@ -2,7 +2,7 @@
 
 import { useGlobalContext } from "@/context/ContextProvider";
 import { insertCollection } from "@/utils/firebase";
-import storeDataInLocalStorage from "@/utils/local.db";
+import storeDataInLocalStorage, { gameConfig } from "@/utils/local.db";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Tilt from "react-parallax-tilt";
@@ -11,11 +11,17 @@ import TASK_TEXT from "../../public/assets/images/TASK-TEXT.png";
 const Quest = ({ gameData, currentMascot }) => {
   const numberOfClicks = gameData?.[currentMascot?.version]?.numberOfClicks;
   const quest = gameData?.[currentMascot?.version]?.quest;
-  const quest1= process.env.QUEST_1 || 10;
-  const quest2= process.env.QUEST_2 || 20;
-  const quest3= process.env.QUEST_3 || 30;
-  const quest4= process.env.QUEST_4 || 40;
-  const quest5= process.env.QUEST_5 || 50;
+  // const quest1= process.env.QUEST_1 || 10;
+  // const quest2= process.env.QUEST_2 || 20;
+  // const quest3= process.env.QUEST_3 || 30;
+  // const quest4= process.env.QUEST_4 || 40;
+  // const quest5= process.env.QUEST_5 || 50;
+
+  const quest1 = gameConfig.quest1;
+  const quest2 = gameConfig.quest2;
+  const quest3 = gameConfig.quest3;
+  const quest4 = gameConfig.quest4;
+  const quest5 = gameConfig.quest5;
   return (
     <div className="w-[30%] h-screen flex justify-center items-center">
       {/* <Tilt> */}
@@ -43,7 +49,7 @@ const Quest = ({ gameData, currentMascot }) => {
                     quest >= 1 ? "passed-quest1" : "tsk-text"
                   }  font-LuckiestGuy `}
                 >
-                  {quest1}
+                  {quest1.clicks}
                 </p>
                 {
                   quest>=1 && <Image
@@ -93,7 +99,7 @@ const Quest = ({ gameData, currentMascot }) => {
                   quest >= 1 ? "passed-quest2" : "tsk-point"
                 }  font-LuckiestGuy `}
               >
-                100
+                {quest1?.points}
               </p>
               {
                 quest>=1? <div className="relative">
@@ -140,7 +146,7 @@ const Quest = ({ gameData, currentMascot }) => {
                     quest >= 2 ? "passed-quest1" : "tsk-text"
                   }  font-LuckiestGuy `}
                 >
-                  {quest2}
+                  {quest2?.clicks}
                 </p>
                 {
                   quest>=2 && <Image
@@ -182,7 +188,7 @@ const Quest = ({ gameData, currentMascot }) => {
                   quest >= 2 ? "passed-quest2" : "tsk-point"
                 }  font-LuckiestGuy `}
               >
-                100
+                {quest2?.points}
               </p>
               {
                 quest>=2? <div className="relative">
@@ -229,7 +235,7 @@ const Quest = ({ gameData, currentMascot }) => {
                     quest >= 3 ? "passed-quest1" : "tsk-text"
                   }  font-LuckiestGuy `}
                 >
-                  {quest3}
+                  {quest3?.clicks}
                 </p>
                 {
                   quest>=3 && <Image
@@ -279,7 +285,7 @@ const Quest = ({ gameData, currentMascot }) => {
                   quest >= 3 ? "passed-quest2" : "tsk-point"
                 }  font-LuckiestGuy `}
               >
-                100
+                {quest3.points}
               </p>
               {
                 quest>=3? <div className="relative">
@@ -326,7 +332,7 @@ const Quest = ({ gameData, currentMascot }) => {
                     quest >= 4 ? "passed-quest1" : "tsk-text"
                   }  font-LuckiestGuy `}
                 >
-                  {quest4}
+                  {quest4?.clicks}
                 </p>
                 {
                   quest>=4 && <Image
@@ -376,7 +382,7 @@ const Quest = ({ gameData, currentMascot }) => {
                   quest >= 4 ? "passed-quest2" : "tsk-point"
                 }  font-LuckiestGuy `}
               >
-                100
+                {quest4?.points}
               </p>
               {
                 quest>=4? <div className="relative">
@@ -423,7 +429,7 @@ const Quest = ({ gameData, currentMascot }) => {
                     quest >= 5 ? "passed-quest1" : "tsk-text"
                   }  font-LuckiestGuy `}
                 >
-                {quest5}
+                {quest5?.clicks}
                 </p>
                 {
                   quest>=5 && <Image
@@ -473,7 +479,7 @@ const Quest = ({ gameData, currentMascot }) => {
                   quest >= 5 ? "passed-quest2" : "tsk-point"
                 }  font-LuckiestGuy `}
               >
-                100
+                {quest5?.points}
               </p>
               {
                 quest>=5? <div className="relative">
@@ -512,126 +518,6 @@ const Quest = ({ gameData, currentMascot }) => {
               className="h-[3px] w-36"
               alt="hamar image"
             />
-          {/* <div className=" flex justify-between items-center">
-            <div className="flex items-center gap-3">
-              <span
-                className={`${
-                  quest >= 2 ? "text-yellow-400" : "text-white"
-                } text-2xl font-extrabold outlinefont`}
-              >
-                200
-              </span>
-              <Image
-                src={"/assets/images/hamar2.png"}
-                width={40}
-                height={40}
-                alt="hamar image"
-              />
-            </div>
-            <span className="text-white">. . . . .</span>
-            <div className="flex items-center">
-              <p className="text-2xl font-semibold text-white font-LuckiestGuy outlinefont">
-                100PT
-              </p>
-              <Image
-                src={"/assets/images/gem2.png"}
-                width={40}
-                height={40}
-                className="h-7 w-7"
-                alt="hamar image"
-              />
-            </div>
-          </div>
-          <div className=" flex justify-between items-center">
-            <div className="flex items-center gap-3">
-              <span
-                className={`${
-                  quest >= 3 ? "text-yellow-400" : "text-white"
-                } text-2xl font-extrabold outlinefont`}
-              >
-                500
-              </span>
-              <Image
-                src={"/assets/images/hamar2.png"}
-                width={40}
-                height={40}
-                alt="hamar image"
-              />
-            </div>
-            <span className="text-white">. . . . .</span>
-            <div className="flex items-center">
-              <p className="text-2xl font-semibold text-white font-LuckiestGuy outlinefont">
-                100PT
-              </p>
-              <Image
-                src={"/assets/images/gem2.png"}
-                width={40}
-                height={40}
-                className="h-7 w-7"
-                alt="hamar image"
-              />
-            </div>
-          </div>
-          <div className=" flex justify-between items-center">
-            <div className="flex items-center gap-3">
-              <span
-                className={`${
-                  quest >= 4 ? "text-yellow-400" : "text-white"
-                } text-2xl font-extrabold outlinefont`}
-              >
-                1000
-              </span>
-              <Image
-                src={"/assets/images/hamar2.png"}
-                width={40}
-                height={40}
-                alt="hamar image"
-              />
-            </div>
-            <span className="text-white">. . . . .</span>
-            <div className="flex items-center">
-              <p className="text-2xl font-semibold text-white font-LuckiestGuy outlinefont">
-                100PT
-              </p>
-              <Image
-                src={"/assets/images/gem2.png"}
-                width={40}
-                height={40}
-                className="h-7 w-7"
-                alt="hamar image"
-              />
-            </div>
-          </div>
-          <div className=" flex justify-between items-center">
-            <div className="flex items-center gap-2">
-              <span
-                className={`${
-                  quest >= 5 ? "text-yellow-400" : "text-white"
-                } text-2xl font-extrabold outlinefont`}
-              >
-                5000
-              </span>
-              <Image
-                src={"/assets/images/hamar2.png"}
-                width={40}
-                height={40}
-                alt="hamar image"
-              />
-            </div>
-            <span className="text-white">. . . . .</span>
-            <div className="flex items-center">
-              <p className="text-2xl font-semibold text-white font-LuckiestGuy outlinefont">
-                100PT
-              </p>
-              <Image
-                src={"/assets/images/gem2.png"}
-                width={40}
-                height={40}
-                className="h-7 w-7"
-                alt="hamar image"
-              />
-            </div>
-          </div> */}
         </div>
       </div>
     </div>

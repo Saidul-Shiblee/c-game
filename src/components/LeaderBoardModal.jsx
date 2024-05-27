@@ -3,6 +3,8 @@
 "use client";// Ensure this path is correct
 import Image from 'next/image';
 import React, {  useState } from 'react';
+import { pointsForPosition } from '@/utils/local.db';
+import leaderbordImg from "./../../public/assets/images/LeaderboardBg.png";
 
 
 const LeaderBoardModal = ({  setIsLeaderBoardOpen,countdown,leaderBoardData,timeRemaining }) => {
@@ -17,11 +19,19 @@ const LeaderBoardModal = ({  setIsLeaderBoardOpen,countdown,leaderBoardData,time
 
   return (
     
-    <div className="fixed inset-0 overflow-y-auto    z-[10000]">
+    <div className="fixed inset-0 overflow-y-auto  z-[10000]">
      <div className="absolute inset-0 bg-light bg-cover bg-no-repeat z-[100001]  ">
-        <div className="max-w-[1000px] mx-auto">
-          <div className="relative 3xl:mt-20 bg-leaderboardBg bg-contain bg-no-repeat h-screen w-full">
-            <div onClick={handleCloseModal} className="absolute top-20 left-[80%]">
+        {/* <div className="max-w-[1000px] mx-auto"> */}
+          <div className="relative flex justify-center items-center mx-auto my-auto h-[700px] 2xl:h-[800px] w-[900px] 2xl:w-[1000px]">
+            <Image 
+            fill
+            priority={true}
+            src={leaderbordImg}
+            alt="bg image"
+            className='absolute object-contain'
+            // width={}
+            />
+            <div onClick={handleCloseModal} className="absolute top-32 2xl:top-40 left-[80%]">
               <Image
                 src="/assets/images/x.png"
                 width={50}
@@ -30,7 +40,7 @@ const LeaderBoardModal = ({  setIsLeaderBoardOpen,countdown,leaderBoardData,time
                 alt="x"
               />
             </div>
-            <div className="absolute top-1/4 2xl:top-[20%] w-[70%] ml-36">
+            <div className="relative z-[10000002] w-[70%] mt-10 flex justify-center flex-col">
               <ul className="grid gap-3">
                {leaderBoardData?.[currentMascotLeaderBoard]?.map((el,index)=> <li key={el.username+index} className={`flex justify-between 
                items-center
@@ -56,7 +66,7 @@ const LeaderBoardModal = ({  setIsLeaderBoardOpen,countdown,leaderBoardData,time
                     />
                   </div>
                   <div className="flex items-center">
-                    <span className="lb-point">{el.point}</span>
+                    <span className="lb-point">{pointsForPosition[index]}</span>
                     <Image
                       src="/assets/images/gem.png"
                       width={50}
@@ -72,7 +82,7 @@ const LeaderBoardModal = ({  setIsLeaderBoardOpen,countdown,leaderBoardData,time
               </ul>
             </div>
 
-            <div className="absolute bottom-[40px] 2xl:bottom-[10%] 3xl:bottom-[23%] -left-8 flex items-center">
+            <div className="absolute bottom-[40px] 2xl:bottom-[60px] -left-8 flex items-center">
               {currentMascotLeaderBoard === "leaderboard1" ? (
                 <Image
                   src="/assets/images/dog1.png"
@@ -131,7 +141,7 @@ const LeaderBoardModal = ({  setIsLeaderBoardOpen,countdown,leaderBoardData,time
               )}
             </div>
 
-            <div className="absolute bottom-[60px] 2xl:bottom-[18%] 3xl:bottom-[25%] right-8 ">
+            <div className="absolute bottom-[80px] 2xl:bottom-[100px] right-8 ">
               <div className="w-[260px] h-10 bg-purple-900 opacity-80 rounded-[602px] flex justify-between items-center pl-3">
                 <h3 className="text-white">{timeRemaining.hours}:{timeRemaining.minutes}:{timeRemaining.seconds} until reset</h3>
                 <div>
@@ -147,7 +157,7 @@ const LeaderBoardModal = ({  setIsLeaderBoardOpen,countdown,leaderBoardData,time
               <h4 className="text-white font-light">Leaderboard refreshes in {countdown} seconds</h4>
             </div>
           </div>
-        </div>
+        {/* </div> */}
       </div>
     </div>
   );
