@@ -51,3 +51,31 @@ export const mascots = [
     sound: '/sounds/ping2.mp3'
   },
 ];
+
+
+
+
+export const gameConfig={
+  quest1:{
+    clicks:10,
+    points:100
+  },
+  quest2:{
+    clicks:20,
+    points:100
+  },
+  quest3:{
+    clicks:30,
+    points:100
+  },
+  quest4:{
+    clicks:40,
+    points:100
+  },
+  quest5:{
+    clicks:50,
+    points:100
+  }
+}
+
+export const pointsForPosition = [500, 400, 300,200,100];

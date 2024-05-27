@@ -7,15 +7,10 @@ import React, { useEffect, useRef, useState } from "react";
 import useSound from "use-sound";
 import ClickCounter from "./ClickCounter";
 import WarningModal from "./WarningModal";
-import dog1 from "../../public/assets/images/catv1.png"
-import dog2 from "../../public/assets/images/mascott_v1.png"
-import dog3 from "../../public/assets/images/catIv2.png"
-import dog4 from "../../public/assets/images/cath2.png"
-import dog5 from "../../public/assets/images/catIv3.png"
-import dog6 from "../../public/assets/images/cathv3.png"
-import dog7 from "../../public/assets/images/catIv4.png"
-import dog8 from "../../public/assets/images/cathv5.png"
+
 import initailMascot from '../../public/assets/images/initial_mascot.png'
+import delayBg from "../../public/assets/images/delayBg.png";
+import { gameConfig } from "@/utils/local.db";
 
 const MascotView = ({
   setGameData,
@@ -34,6 +29,7 @@ const MascotView = ({
   const [isOPen, setIsOPen] = useState(false);
 
   const [showSecondImage, setShowSecondImage] = useState(false);
+  const [time, setTime] = useState(5);
 
   const onClose=()=>{setIsOPen(false)}
 
@@ -42,10 +38,25 @@ const MascotView = ({
   const timerRef = useRef(null);
 
   const numberOfClicks = gameData?.[currentMascot?.version]?.numberOfClicks;
+  const quest1 = gameConfig.quest1;
+  const quest2 = gameConfig.quest2;
+  const quest3 = gameConfig.quest3;
+  const quest4 = gameConfig.quest4;
+  const quest5 = gameConfig.quest5;
 
   useEffect(() => {
-    setTimeout(() => setDelay(false), 2000);
+    if (time > 0) {
+      const timerId = setTimeout(() => {
+        setTime(time - 1);
+      }, 1000);
+      return () => clearTimeout(timerId);
+    }
+  }, [time]);
+  useEffect(() => {
+    setTimeout(() => setDelay(false), 5000);
+    setTime(5);
   }, [currentMascot?.version]);
+  
 
   const handleStart = () => {
     setIdle(false); // Reset idle state when the user interacts
@@ -99,76 +110,76 @@ const MascotView = ({
     setShowSecondImage(true);
     setGameData((pre) => {
       const saveData = async () => {
-        if (pre[currentMascot.version]?.numberOfClicks + 1 === 10 && pre[currentMascot.version]?.quest < 1) {
+        if (pre[currentMascot.version]?.numberOfClicks + 1 === quest1?.clicks && pre[currentMascot.version]?.quest < 1) {
           await insertCollection(currentMascot?.version+"_"+getTodayDate(), {
             numberOfClicks: pre[currentMascot.version]?.numberOfClicks + 1,
-            point: pre[currentMascot.version]?.point+100,
+            point: pre[currentMascot.version]?.point+quest1?.points,
             quest: pre[currentMascot.version]?.quest+1,
             userId: currentUser?.uid,
             username: currentUser?.displayName,
           });
           await insertCollection("totalPoints", {
-            points: pre.totalPoints+100,
+            points: pre.totalPoints+quest1?.points,
             userId: currentUser?.uid,
           })
          
    
         }
-        if (pre[currentMascot.version]?.numberOfClicks + 1 === 20 && pre[currentMascot.version]?.quest < 2) {
+        if (pre[currentMascot.version]?.numberOfClicks + 1 === quest2?.clicks && pre[currentMascot.version]?.quest < 2) {
           await insertCollection(currentMascot?.version+"_"+getTodayDate(), {
             numberOfClicks: pre[currentMascot.version]?.numberOfClicks + 1,
-            point: pre[currentMascot.version]?.point+100,
+            point: pre[currentMascot.version]?.point+quest2?.points,
             quest: pre[currentMascot.version]?.quest+1,
             userId: currentUser?.uid,
             username: currentUser?.displayName,
           });
 
           await insertCollection("totalPoints", {
-            points: pre.totalPoints+100,
+            points: pre.totalPoints+quest2?.points,
             userId: currentUser?.uid,
           })
        
         }
-        if (pre[currentMascot.version]?.numberOfClicks + 1 === 30 && pre[currentMascot.version]?.quest < 3) {
+        if (pre[currentMascot.version]?.numberOfClicks + 1 === quest3?.clicks && pre[currentMascot.version]?.quest < 3) {
           await insertCollection(currentMascot?.version+"_"+getTodayDate(), {
             numberOfClicks: pre[currentMascot.version]?.numberOfClicks + 1,
-            point: pre[currentMascot.version]?.point+100,
+            point: pre[currentMascot.version]?.point+quest3?.points,
             quest: pre[currentMascot.version]?.quest+1,
             userId: currentUser?.uid,
             username: currentUser?.displayName,
           });
 
           await insertCollection("totalPoints", {
-            points: pre.totalPoints+100,
+            points: pre.totalPoints+quest3?.points,
             userId: currentUser?.uid,
           })
          
         }
-        if (pre[currentMascot.version]?.numberOfClicks + 1 === 40 && pre[currentMascot.version]?.quest < 4) {
+        if (pre[currentMascot.version]?.numberOfClicks + 1 === quest4?.clicks && pre[currentMascot.version]?.quest < 4) {
           await insertCollection(currentMascot?.version+"_"+getTodayDate(), {
             numberOfClicks: pre[currentMascot.version]?.numberOfClicks + 1,
-            point: pre[currentMascot.version]?.point+100,
+            point: pre[currentMascot.version]?.point+quest4?.points,
             quest: pre[currentMascot.version]?.quest+1,
             userId: currentUser?.uid,
             username: currentUser?.displayName,
           });
           await insertCollection("totalPoints", {
-            points: pre.totalPoints+100,
+            points: pre.totalPoints+quest4?.points,
             userId: currentUser?.uid,
           })
           
         }
-        if (pre[currentMascot.version]?.numberOfClicks + 1 === 50 && pre[currentMascot.version]?.quest < 5) {
+        if (pre[currentMascot.version]?.numberOfClicks + 1 === quest5?.clicks && pre[currentMascot.version]?.quest < 5) {
           await insertCollection(currentMascot?.version+"_"+getTodayDate(), {
             numberOfClicks: pre[currentMascot.version]?.numberOfClicks + 1,
-            point: pre[currentMascot.version]?.point+100,
+            point: pre[currentMascot.version]?.point+quest5?.points,
             quest: pre[currentMascot.version]?.quest+1,
             userId: currentUser?.uid,
             username: currentUser?.displayName,
           });
     
           await insertCollection("totalPoints", {
-            points: pre.totalPoints+100,
+            points: pre.totalPoints+quest5?.points,
             userId: currentUser?.uid,
           })
          
@@ -176,50 +187,50 @@ const MascotView = ({
       };
       saveData()
       if (
-        pre[currentMascot.version]?.numberOfClicks + 1 === 10 &&
-        totalCount?.[currentMascot?.version] <= 10
+        pre[currentMascot.version]?.numberOfClicks + 1 === quest1?.clicks &&
+        totalCount?.[currentMascot?.version] <= quest1?.clicks
       ) {
         setTotalCount((pre) => ({
           ...pre,
-          [currentMascot?.version]: 10,
+          [currentMascot?.version]: quest1?.clicks,
         }));
       }
       if (
-        pre[currentMascot.version]?.numberOfClicks + 1 === 20 &&
-        totalCount?.[currentMascot?.version] <= 20
+        pre[currentMascot.version]?.numberOfClicks + 1 === quest2?.clicks &&
+        totalCount?.[currentMascot?.version] <= quest2?.clicks
       ) {
         setTotalCount((pre) => ({
           ...pre,
-          [currentMascot?.version]: 20,
+          [currentMascot?.version]: quest2?.clicks,
         }));
       }
 
       if (
-        pre[currentMascot.version]?.numberOfClicks + 1 === 30 &&
-        totalCount?.[currentMascot?.version] <= 30
+        pre[currentMascot.version]?.numberOfClicks + 1 === quest3?.clicks &&
+        totalCount?.[currentMascot?.version] <= quest3?.clicks
       ) {
         setTotalCount((pre) => ({
           ...pre,
-          [currentMascot?.version]: 30,
+          [currentMascot?.version]: quest3?.clicks,
         }));
       }
       if (
-        pre[currentMascot.version]?.numberOfClicks + 1 === 40 &&
-        totalCount?.[currentMascot?.version] <= 40
+        pre[currentMascot.version]?.numberOfClicks + 1 === quest4?.clicks &&
+        totalCount?.[currentMascot?.version] <= quest4?.clicks
       ) {
         setTotalCount((pre) => ({
           ...pre,
-          [currentMascot?.version]: 40,
+          [currentMascot?.version]: quest4?.clicks,
         }));
       }
       
       if (
-        pre[currentMascot.version]?.numberOfClicks + 1 === 50 &&
-        totalCount?.[currentMascot?.version] <= 50
+        pre[currentMascot.version]?.numberOfClicks + 1 === quest5?.clicks &&
+        totalCount?.[currentMascot?.version] <= quest5?.clicks
       ) {
         setTotalCount((pre) => ({
           ...pre,
-          [currentMascot?.version]: 50,
+          [currentMascot?.version]: quest5?.clicks,
         }));
       }
 
@@ -229,78 +240,78 @@ const MascotView = ({
           [currentMascot.version]: {
             ...pre[currentMascot.version],
             numberOfClicks: pre[currentMascot.version]?.numberOfClicks + 1,
-            ...(pre[currentMascot.version]?.numberOfClicks + 1 === 10 &&
+            ...(pre[currentMascot.version]?.numberOfClicks + 1 === quest1?.clicks &&
             pre[currentMascot.version]?.quest <= 1
               ? {
                   quest: 1,
                 }
               : {}),
-            ...(pre[currentMascot.version]?.numberOfClicks + 1 === 20 &&
+            ...(pre[currentMascot.version]?.numberOfClicks + 1 === quest2?.clicks &&
             pre[currentMascot.version]?.quest <= 2
               ? {
                   quest: 2,
                 }
               : {}),
-            ...(pre[currentMascot.version]?.numberOfClicks + 1 === 30 &&
+            ...(pre[currentMascot.version]?.numberOfClicks + 1 === quest3?.clicks &&
             pre[currentMascot.version]?.quest <= 3
               ? {
                   quest: 3,
                 }
               : {}),
-            ...(pre[currentMascot.version]?.numberOfClicks + 1 === 40 &&
+            ...(pre[currentMascot.version]?.numberOfClicks + 1 === quest4?.clicks &&
             pre[currentMascot.version]?.quest <= 4
               ? {
                   quest: 4,
                 }
               : {}),
-            ...(pre[currentMascot.version]?.numberOfClicks + 1 === 50 &&
+            ...(pre[currentMascot.version]?.numberOfClicks + 1 === quest5?.clicks &&
             pre[currentMascot.version]?.quest <= 5
               ? {
                   quest: 5,
                 }
               : {}),
 
-            ...(pre[currentMascot.version]?.numberOfClicks + 1 === 10 &&
+            ...(pre[currentMascot.version]?.numberOfClicks + 1 === quest1?.clicks &&
             pre[currentMascot.version]?.quest <= 0
               ? {
-                  point: 100,
+                  point: quest1?.points,
                 }
               : {}),
-            ...(pre[currentMascot.version]?.numberOfClicks + 1 === 20 &&
+            ...(pre[currentMascot.version]?.numberOfClicks + 1 === quest2?.clicks &&
             pre[currentMascot.version]?.quest <= 1
               ? {
-                  point: 200,
+                  point: quest2?.points,
                 }
               : {}),
-            ...(pre[currentMascot.version]?.numberOfClicks + 1 === 30 &&
+            ...(pre[currentMascot.version]?.numberOfClicks + 1 === quest3?.clicks &&
             pre[currentMascot.version]?.quest <= 2
               ? {
-                  point: 300,
+                  point: quest3?.points,
                 }
               : {}),
-            ...(pre[currentMascot.version]?.numberOfClicks + 1 === 40 &&
+            ...(pre[currentMascot.version]?.numberOfClicks + 1 === quest4?.clicks &&
             pre[currentMascot.version]?.quest <= 3
               ? {
-                  point: 400,
+                  point: quest4?.points,
                 }
               : {}),
-            ...(pre[currentMascot.version]?.numberOfClicks + 1 === 50 &&
+            ...(pre[currentMascot.version]?.numberOfClicks + 1 === quest5?.clicks &&
             pre[currentMascot.version]?.quest <= 4
               ? {
-                  point: 500,
+                  point: quest5?.points,
                 }
               : {}),
           },
           totalPoints:
-          pre[currentMascot.version]?.numberOfClicks + 1 === 10 && pre[currentMascot.version]?.quest <= 0 ? pre.totalPoints+100
+          pre[currentMascot.version]?.numberOfClicks + 1 === quest1?.clicks && pre[currentMascot.version]?.quest <= 0 ? pre.totalPoints+quest1?.points
           :
-          pre[currentMascot.version]?.numberOfClicks + 1 === 20 &&  pre[currentMascot.version]?.quest <= 1 ? pre.totalPoints+100
+          pre[currentMascot.version]?.numberOfClicks + 1 === quest2?.clicks &&  pre[currentMascot.version]?.quest <= 1 ? pre.totalPoints+quest2?.points
           :
-          pre[currentMascot.version]?.numberOfClicks + 1 === 30 && pre[currentMascot.version]?.quest <= 2 ? pre.totalPoints+100
+          pre[currentMascot.version]?.numberOfClicks + 1 === quest3?.clicks && pre[currentMascot.version]?.quest <= 2 ? pre.totalPoints+quest3?.points
           :
-          pre[currentMascot.version]?.numberOfClicks + 1 === 40 && pre[currentMascot.version]?.quest <= 3 ? pre.totalPoints+100
+          pre[currentMascot.version]?.numberOfClicks + 1 === quest4?.clicks && pre[currentMascot.version]?.quest <= 3 ? pre.totalPoints+quest4?.points
           :
-          pre[currentMascot.version]?.numberOfClicks + 1 === 50 && pre[currentMascot.version]?.quest <= 4 ? pre.totalPoints+100
+          pre[currentMascot.version]?.numberOfClicks + 1 === quest5?.clicks && pre[currentMascot.version]?.quest <= 4 ? pre.totalPoints+quest5?.points
           :pre.totalPoints
         };
     });
@@ -316,13 +327,13 @@ const MascotView = ({
 
   if (numberOfClicks < 0) {
     currentImage = currentMascot?.initialImg;
-  } else if (numberOfClicks >= 1 && numberOfClicks < 10) {
+  } else if (numberOfClicks >= 1 && numberOfClicks < quest1?.clicks) {
     currentImage = currentMascot?.image2;
-  } else if (numberOfClicks >= 10 && numberOfClicks < 20) {
+  } else if (numberOfClicks >= quest1?.clicks && numberOfClicks < quest2?.clicks) {
     currentImage = currentMascot?.image4;
-  } else if (numberOfClicks >= 20 && numberOfClicks < 30) {
+  } else if (numberOfClicks >= quest2?.clicks && numberOfClicks < quest3?.clicks) {
     currentImage = currentMascot?.image6;
-  } else if (numberOfClicks >= 30 && numberOfClicks < 40) {
+  } else if (numberOfClicks >= quest3?.clicks && numberOfClicks < quest4?.clicks) {
     currentImage = currentMascot?.image8;
   } else {
     currentImage = currentMascot?.image8;
@@ -331,15 +342,15 @@ const MascotView = ({
   let secondaryImg;
   if (numberOfClicks <= 0) {
     secondaryImg = currentMascot?.initialImg;
-  } else if (numberOfClicks >= 1 && numberOfClicks < 10) {
+  } else if (numberOfClicks >= 1 && numberOfClicks < quest1?.clicks) {
     secondaryImg = currentMascot?.image1;
-  } else if (numberOfClicks >= 10 && numberOfClicks < 20) {
+  } else if (numberOfClicks >= quest1?.clicks && numberOfClicks < quest2?.clicks) {
     secondaryImg = currentMascot?.image3;
-  } else if (numberOfClicks >= 20 && numberOfClicks < 30) {
+  } else if (numberOfClicks >= quest2?.clicks && numberOfClicks < quest3?.clicks) {
     secondaryImg = currentMascot?.image5;
-  } else if (numberOfClicks >= 30 && numberOfClicks < 40) {
+  } else if (numberOfClicks >= quest3?.clicks && numberOfClicks < quest4?.clicks) {
     secondaryImg = currentMascot?.image7;
-  } else if (numberOfClicks >= 40) {
+  } else if (numberOfClicks >= quest4?.clicks) {
     secondaryImg = currentMascot?.image7;
   }
 
@@ -351,26 +362,22 @@ const MascotView = ({
       className="cursor-pointer flex justify-center items-center h-screen w-[40%] select-none bottom-0"
     >
 
+<div className={`${delay? "hidden": "block"}`}>
 <ClickCounter gameData={gameData} currentMascot={currentMascot} />
+</div>
       {delay ? (
-        <div role="status">
-          <svg
-            aria-hidden="true"
-            class="inline w-10 h-10 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
-            viewBox="0 0 100 101"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-              fill="currentColor"
+        <div role="status" className="relative">
+        
+           <Image
+              priority={true}
+              src={delayBg}
+              width={217}
+              height={217}
+              alt="Game mascot"
+              className="spin-180"
+            
             />
-            <path
-              d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-              fill="currentFill"
-            />
-          </svg>
-          <span class="sr-only">Loading...</span>
+            <h3 className="text-[100px] absolute top-[17%] left-[40%] text-white">{time}</h3>
         </div>
       ) : (
       
@@ -387,62 +394,7 @@ const MascotView = ({
 
 
       <>
-      <Image
-              priority={true}
-              src={dog1}
-              alt="Game mascot"
-              className="hidden"
-            
-            />
-      <Image
-              priority={true}
-              src={dog2}
-              alt="Game mascot"
-              className="hidden"
-            
-            />
-      <Image
-              priority={true}
-              src={dog3}
-              alt="Game mascot"
-              className="hidden"
-            
-            />
-      <Image
-              priority={true}
-              src={dog4}
-              alt="Game mascot"
-              className="hidden"
-            
-            />
-      <Image
-              priority={true}
-              src={dog5}
-              alt="Game mascot"
-              className="hidden"
-            
-            />
-      <Image
-              priority={true}
-              src={dog6}
-              alt="Game mascot"
-              className="hidden"
-            
-            />
-      <Image
-              priority={true}
-              src={dog7}
-              alt="Game mascot"
-              className="hidden"
-            
-            />
-      <Image
-              priority={true}
-              src={dog8}
-              alt="Game mascot"
-              className="hidden"
-            
-            />
+     
 
       
       </>

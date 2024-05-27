@@ -30,7 +30,7 @@ const LeaderBoardModal = ({  setIsLeaderBoardOpen,countdown,leaderBoardData,time
                 alt="x"
               />
             </div>
-            <div className="absolute top-1/4 w-[70%] ml-36">
+            <div className="absolute top-1/4 2xl:top-[20%] w-[70%] ml-36">
               <ul className="grid gap-3">
                {leaderBoardData?.[currentMascotLeaderBoard]?.map((el,index)=> <li key={el.username+index} className={`flex justify-between 
                items-center
@@ -72,7 +72,7 @@ const LeaderBoardModal = ({  setIsLeaderBoardOpen,countdown,leaderBoardData,time
               </ul>
             </div>
 
-            <div className="absolute bottom-[90px] 2xl:bottom-[14%] 3xl:bottom-[32%] -left-8 flex items-center">
+            <div className="absolute bottom-[40px] 2xl:bottom-[10%] 3xl:bottom-[23%] -left-8 flex items-center">
               {currentMascotLeaderBoard === "leaderboard1" ? (
                 <Image
                   src="/assets/images/dog1.png"
@@ -131,7 +131,7 @@ const LeaderBoardModal = ({  setIsLeaderBoardOpen,countdown,leaderBoardData,time
               )}
             </div>
 
-            <div className="absolute bottom-[120px] 2xl:bottom-[18%] 3xl:bottom-[35%] right-8 ">
+            <div className="absolute bottom-[60px] 2xl:bottom-[18%] 3xl:bottom-[25%] right-8 ">
               <div className="w-[260px] h-10 bg-purple-900 opacity-80 rounded-[602px] flex justify-between items-center pl-3">
                 <h3 className="text-white">{timeRemaining.hours}:{timeRemaining.minutes}:{timeRemaining.seconds} until reset</h3>
                 <div>

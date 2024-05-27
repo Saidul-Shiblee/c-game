@@ -1,19 +1,20 @@
 import Image from "next/image";
 import React from "react";
 import { ProgressBar } from "react-progressbar-fancy";
+import { gameConfig } from "@/utils/local.db";
 
 const ProgressSection = ({ gameData, currentMascot }) => {
   const quest = gameData?.[currentMascot?.version]?.quest;
   const numberOfClicks = gameData?.[currentMascot?.version]?.numberOfClicks;
-  const quest1= process.env.QUEST_1 || 10;
-  const quest2= process.env.QUEST_2 || 20;
-  const quest3= process.env.QUEST_3 || 30;
-  const quest4= process.env.QUEST_4 || 40;
-  const quest5= process.env.QUEST_5 || 50;
+  const quest1 = gameConfig.quest1;
+  const quest2 = gameConfig.quest2;
+  const quest3 = gameConfig.quest3;
+  const quest4 = gameConfig.quest4;
+  const quest5 = gameConfig.quest5;
   return (
     <div className="absolute bottom-10 w-1/2 mx-auto">
       {
-        numberOfClicks >= 0 && numberOfClicks<=quest1 && <div>
+        numberOfClicks >= 0 && numberOfClicks<=quest1?.clicks && <div>
         <div className="flex justify-between mx-4">
           <div className="flex items-center">
             <Image
@@ -27,11 +28,11 @@ const ProgressSection = ({ gameData, currentMascot }) => {
               <span className=" passed-quest1 text-2xl font-extrabold outlinefont">
                 {numberOfClicks}
               </span>
-              <span className=" text-purple-900 font-semibold">{" "}/ {" "} {quest1}</span>
+              <span className=" text-purple-900 font-semibold">{" "}/ {" "} {quest1?.clicks}</span>
             </p>
           </div>
           <div className="flex gap-2 items-center">
-            <p className=" text-purple-900 font-semibold">100</p>
+            <p className=" text-purple-900 font-semibold">{quest1?.points}</p>
             <Image
               src={"/assets/images/gem2.png"}
               width={40}
@@ -52,7 +53,7 @@ const ProgressSection = ({ gameData, currentMascot }) => {
         </div>
       }
       {
-        numberOfClicks >= quest1+1 && numberOfClicks<=quest2 && <div>
+        numberOfClicks >= quest1?.clicks+1 && numberOfClicks<=quest2?.clicks && <div>
         <div className="flex justify-between mx-4">
           <div className="flex items-center">
             <Image
@@ -66,11 +67,11 @@ const ProgressSection = ({ gameData, currentMascot }) => {
               <span className=" text-yellow-400 text-2xl font-extrabold outlinefont">
                 {numberOfClicks}
               </span>
-              <span className=" text-purple-900 font-semibold">/{" "}{quest2}</span>
+              <span className=" text-purple-900 font-semibold">/{" "}{quest2?.clicks}</span>
             </p>
           </div>
           <div className="flex items-center">
-            <p className=" text-purple-900 font-semibold">100</p>
+            <p className=" text-purple-900 font-semibold">{quest2?.points}</p>
             <Image
               src={"/assets/images/gem2.png"}
               width={40}
@@ -91,7 +92,7 @@ const ProgressSection = ({ gameData, currentMascot }) => {
         </div>
       }
       {
-        numberOfClicks >= quest2+1 && numberOfClicks<=quest3 && <div>
+        numberOfClicks >= quest2?.clicks+1 && numberOfClicks<=quest3?.clicks && <div>
         <div className="flex justify-between mx-4">
           <div className="flex items-center">
             <Image
@@ -105,11 +106,11 @@ const ProgressSection = ({ gameData, currentMascot }) => {
               <span className=" text-yellow-400 text-2xl font-extrabold outlinefont">
                 {numberOfClicks}
               </span>
-              <span className=" text-purple-900 font-semibold">/{" "}{quest3}</span>
+              <span className=" text-purple-900 font-semibold">/{" "}{quest3?.clicks}</span>
             </p>
           </div>
           <div className="flex items-center">
-            <p className=" text-purple-900 font-semibold">100</p>
+            <p className=" text-purple-900 font-semibold">{quest3?.points}</p>
             <Image
               src={"/assets/images/gem2.png"}
               width={40}
@@ -130,7 +131,7 @@ const ProgressSection = ({ gameData, currentMascot }) => {
         </div>
       }
       {
-        numberOfClicks >= quest3+1 && numberOfClicks<=quest4 && <div>
+        numberOfClicks >= quest3?.clicks+1 && numberOfClicks<=quest4?.clicks && <div>
         <div className="flex justify-between mx-4">
           <div className="flex items-center">
             <Image
@@ -144,11 +145,11 @@ const ProgressSection = ({ gameData, currentMascot }) => {
               <span className=" text-yellow-400 text-2xl font-extrabold outlinefont">
                 {numberOfClicks}
               </span>
-              <span className=" text-purple-900 font-semibold">/{" "}{quest4}</span>
+              <span className=" text-purple-900 font-semibold">/{" "}{quest4?.clicks}</span>
             </p>
           </div>
           <div className="flex items-center">
-            <p className=" text-purple-900 font-semibold">100</p>
+            <p className=" text-purple-900 font-semibold">{quest4?.points}</p>
             <Image
               src={"/assets/images/gem2.png"}
               width={40}
@@ -169,7 +170,7 @@ const ProgressSection = ({ gameData, currentMascot }) => {
         </div>
       }
       {
-        numberOfClicks >= quest4+1 && numberOfClicks<=quest5 && <div>
+        numberOfClicks >= quest4?.clicks+1 && numberOfClicks<=quest5?.clicks && <div>
         <div className="flex justify-between mx-4">
           <div className="flex items-center">
             <Image
@@ -183,11 +184,11 @@ const ProgressSection = ({ gameData, currentMascot }) => {
               <span className=" text-yellow-400 text-2xl font-extrabold outlinefont">
                 {numberOfClicks}
               </span>
-              <span className=" text-purple-900 font-semibold">/{" "}{quest5}</span>
+              <span className=" text-purple-900 font-semibold">/{" "}{quest5?.clicks}</span>
             </p>
           </div>
           <div className="flex items-center">
-            <p className=" text-purple-900 font-semibold">100</p>
+            <p className=" text-purple-900 font-semibold">{quest5?.points}</p>
             <Image
               src={"/assets/images/gem2.png"}
               width={40}

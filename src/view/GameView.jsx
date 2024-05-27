@@ -11,6 +11,7 @@ import { getTodayDate } from "@/utils/fuctions";
 import { mascots } from "@/utils/local.db";
 import React, { useEffect, useState } from "react";
 import { calculateTimeRemaining } from '@/utils/fuctions'; 
+import PublicImages from "@/components/PublicImages";
 
 const HomeView = ({gameData, setGameData}) => {
   const { currentUser } = useGlobalContext();
@@ -213,6 +214,8 @@ saveData()
         totalCount={totalCount}
         setTotalCount={setTotalCount}
       />
+
+      <PublicImages />
 
 {
   isLeaderBoardOpen && <LeaderBoardModal 
